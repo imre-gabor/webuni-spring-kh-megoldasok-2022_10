@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import hu.webuni.university.dto.TeacherDto;
-import hu.webuni.university.mapper.TeacherMapper;
-import hu.webuni.university.repository.TeacherRepository;
+import hu.webuni.university.dto.StudentDto;
+import hu.webuni.university.mapper.StudentMapper;
+import hu.webuni.university.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/teachers")
-public class TeacherController {
+@RequestMapping("/api/students")
+public class StudentControllerOld {
 	
-	private final TeacherRepository teacherRepository;
+	private final StudentRepository studentRepository;
 
-	private final TeacherMapper teacherMapper;
+	private final StudentMapper studentMapper;
 
 	@GetMapping("/{id}")
-	public TeacherDto findById(@PathVariable("id") int id) {
-		return teacherMapper.teacherToDto(teacherRepository.findById(id)
+	public StudentDto findById(@PathVariable("id") int id) {
+		return studentMapper.studentToDto(studentRepository.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
 	}
-
+	
 }
