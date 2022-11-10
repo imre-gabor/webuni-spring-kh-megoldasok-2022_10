@@ -50,6 +50,7 @@ public class Course {
 
 	@ManyToMany
 	private Set<Teacher> teachers;
+	
 	@OneToMany(mappedBy = "course")
 	private Set<TimeTableItem> timeTableItems;
 	

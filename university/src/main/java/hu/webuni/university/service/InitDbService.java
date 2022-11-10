@@ -38,13 +38,17 @@ public class InitDbService {
 	@Transactional
 	public void deleteDb() {
 	
-		courseRepository.deleteAll();
-		studentRepository.deleteAll();
-		teacherRepository.deleteAll();
+		specialDayRepository.deleteAllInBatch();
+		timeTableItemRepository.deleteAllInBatch();
+		courseRepository.deleteAllInBatch();
+		studentRepository.deleteAllInBatch();
+		teacherRepository.deleteAllInBatch();
 	}
 	
 	@Transactional
 	public void deleteAudTables() {
+		jdbcTemplate.update("DELETE FROM time_table_item_aud");
+		jdbcTemplate.update("DELETE FROM special_day_aud");
 		jdbcTemplate.update("DELETE FROM teacher_aud");
 		jdbcTemplate.update("DELETE FROM course_aud");
 		jdbcTemplate.update("DELETE FROM student_aud");
