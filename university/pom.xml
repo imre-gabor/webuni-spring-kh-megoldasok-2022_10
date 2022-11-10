@@ -209,26 +209,25 @@
 					</execution>
 				</executions>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>jaxws-maven-plugin</artifactId> -->
-<!-- 				<version>2.6</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<goals> -->
-<!-- 							<goal>wsimport</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 				<configuration> -->
-<!-- 					The name of your generated source package -->
-<!-- 					<packageName>hu.webuni.eduservice.wsclient</packageName> -->
-<!-- 					<wsdlUrls> -->
-<!-- 						<wsdlUrl>http://localhost:8081/services/student?wsdl</wsdlUrl> -->
-<!-- 					</wsdlUrls> -->
-<!-- 				</configuration> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>					
+					<packageName>hu.webuni.eduservice.wsclient</packageName>
+					<wsdlUrls>
+						<wsdlUrl>http://localhost:8081/services/student?wsdl</wsdlUrl>
+					</wsdlUrls>
+				</configuration>
 
-<!-- 			</plugin> -->
+			</plugin>
 		</plugins>
 	</build>
 
