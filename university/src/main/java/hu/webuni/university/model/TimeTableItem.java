@@ -1,13 +1,11 @@
 package hu.webuni.university.model;
 
-import java.time.LocalDate;
-import java.util.Set;
+import java.time.LocalTime;
 
-import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.envers.Audited;
 
@@ -18,7 +16,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Audited
 @Entity
 @Data
 @Builder
@@ -26,26 +23,20 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(onlyExplicitlyIncluded = true)
-@Cacheable
-public class Student {
+@Audited
+public class TimeTableItem {
 
 	@Id
 	@GeneratedValue
 	@ToString.Include
 	@EqualsAndHashCode.Include
 	private int id;
+	
+	private int dayOfWeek;
+	private LocalTime startLesson;
+	private LocalTime endLesson;
+	
+	@ManyToOne
+	private Course course;
 
-	@ToString.Include
-	private String name;
-	
-	private LocalDate birthdate;
-	private int semester;
-	
-	@ManyToMany(mappedBy = "students")
-	private Set<Course> courses;
-	
-	private Integer eduId;
-	private Integer numFreeSemesters;
-	
-	private int balance;
 }

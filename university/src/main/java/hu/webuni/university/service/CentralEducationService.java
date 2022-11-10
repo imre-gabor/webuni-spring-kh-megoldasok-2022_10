@@ -13,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CentralEducationService {
 		
-//	@Autowired
-//	CentralEducationService centralEducationService;
 	
 	@Autowired
 	private StudentRepository studentRepository;

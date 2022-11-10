@@ -34,7 +34,7 @@ public class CourseController implements CourseControllerApi {
 	
 	private final CourseMapper courseMapper;
 	private final NativeWebRequest request;
-	private final MethodArgumentResolverHelper resolverHelper;
+	private final MethodArgumentResolverHelper resolverHelper;	
 
 	@Override
 	public Optional<NativeWebRequest> getRequest() {
@@ -87,6 +87,7 @@ public class CourseController implements CourseControllerApi {
 			Iterable<Course> courses = courseRepository.findAll(predicate, pageable);
 			return ResponseEntity.ok(courseMapper.courseSummariesToDtos(courses));
 		}
-	}
+	}		
+	
 	
 }
