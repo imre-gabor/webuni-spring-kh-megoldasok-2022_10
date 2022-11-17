@@ -30,6 +30,10 @@ public class UniversityUserDetailsService implements UserDetailsService {
 		UniversityUser universityUser = userRepository.findByUsername(username)
 				.orElseThrow(()-> new UsernameNotFoundException(username));
 		
+		return createUserDetails(universityUser);
+	}
+
+	public static UserDetails createUserDetails(UniversityUser universityUser) {
 		Set<Course> courses = null;
 		if(universityUser instanceof Teacher) {
 			courses = ((Teacher)universityUser).getCourses();
@@ -37,7 +41,7 @@ public class UniversityUserDetailsService implements UserDetailsService {
 			courses = ((Student)universityUser).getCourses();
 		}
 		
-		return new UserInfo(username, universityUser.getPassword(), 
+		return new UserInfo(universityUser.getUsername(), universityUser.getPassword(), 
 				Arrays.asList(new SimpleGrantedAuthority(universityUser.getUserType().toString())), 
 				courses == null ? Collections.emptyList() : courses.stream().map(Course::getId).toList());
 	}
