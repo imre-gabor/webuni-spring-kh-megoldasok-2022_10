@@ -56,6 +56,8 @@ public class InitDbService {
 		jdbcTemplate.update("DELETE FROM student_aud");
 		jdbcTemplate.update("DELETE FROM course_students_aud");
 		jdbcTemplate.update("DELETE FROM course_teachers_aud");
+		jdbcTemplate.update("DELETE FROM course_teachers_aud");
+		jdbcTemplate.update("DELETE FROM university_user_aud");
 		jdbcTemplate.update("DELETE FROM revinfo");
 	}
 
