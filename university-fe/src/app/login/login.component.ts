@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FacebookLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthService } from '../auth.service';
 import { LoginService } from '../login.service';
 

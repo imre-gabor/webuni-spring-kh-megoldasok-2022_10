@@ -10,6 +10,7 @@ import hu.webuni.university.api.model.TimeTableItemDto;
 @WebService
 public interface TimetableWs {
 
-	public List<TimeTableItemDto> getTimetableForStudent(Integer studentId, LocalDate from, LocalDate until);
+	public List<TimeTableItemDto> getTimetableForStudent(Integer studentId, 
+			LocalDate from, LocalDate until);
 
 }
