@@ -29,4 +29,10 @@ export class LoginService {
       "fbToken": token
     });
   } 
+
+  loginWithGoogleToken(token: string): Observable<string> {
+    return this.http.post<string>(this.loginUrl, {
+      "googleToken": token
+    });
+  }
 }

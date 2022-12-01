@@ -2,21 +2,26 @@ package hu.webuni.university.service;
 
 import java.util.Random;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import hu.webuni.eduservice.wsclient.StudentXmlWsImplService;
 import hu.webuni.university.aspect.Retry;
 import hu.webuni.university.repository.StudentRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+
+@RequiredArgsConstructor
 public class CentralEducationService {
-		
-	
-	@Autowired
-	private StudentRepository studentRepository;
+
+	private static final String DEST_FREE_SEMESTER_REQUESTS = "free_semester_requests";
+	public static final String DEST_FREE_SEMESTER_RESPONSES = "free_semester_responses";
+
+	private final JmsTemplate educationJmsTemplate;
+	private final StudentRepository studentRepository;
 	
 	private Random random = new Random();
 
@@ -33,23 +38,7 @@ public class CentralEducationService {
 		}
 	}
 	
-//	@Scheduled(cron = "${university.freeSemesterUpdater.cron}")
-//	public void updateFreeSemesters() {
-//		List<Student> students = studentRepository.findAll();
-//		
-//		students.forEach(student -> {
-//			System.out.format("Get number of free semesters of student in CentralEducationService %s%n", student.getName());
-//	
-//			try {
-//				Integer eduId = student.getEduId();
-//				if(eduId != null) {
-//					int numFreeSemesters = getNumFreeSemestersForStudent(eduId);
-//					student.setNumFreeSemesters(numFreeSemesters);
-//					studentRepository.save(student);
-//				}
-//			} catch (Exception e) {
-//				log.error("Error calling central education service.", e);
-//			}
-//		});
-//	}
+	public void askNumFreeSemestersForStudent(int eduId) {
+	
+	}
 }

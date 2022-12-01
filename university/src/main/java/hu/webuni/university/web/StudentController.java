@@ -30,7 +30,7 @@ public class StudentController implements StudentControllerApi {
 		try {
 			studentService.saveProfilePicture(id, content.getInputStream());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().build();
 		}
